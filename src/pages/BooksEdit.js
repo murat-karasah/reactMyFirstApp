@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { Stack,TextField,PrimaryButton } from '@fluentui/react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 
 
 
 export default function BooksEdit() {
+  const location = useLocation();
+  console.log(location.state);
   const [pageData,setPageData]=React.useState(
     {
       "name": "",
@@ -18,10 +21,16 @@ export default function BooksEdit() {
       setPageData({...pageData,[e.target.name]:e.target.value})
     }
     function editBook(){
-      console.log("EditBook")
+      console.log("https://api-bookseller.herokuapp.com/books/"+location.state.id,pageData).then(response=>{
+        console.log(response)
+        if(response.status==200)
+        {
+          alert("Books Successfully Update!")
+        }
+      })
     }
     function fetchBookById(){
-      axios.get("https://api-bookseller.herokuapp.com/books/1").then(response=>setPageData(response.data))
+      axios.get("https://api-bookseller.herokuapp.com/books/"+location.state.id).then(response=>setPageData(response.data))
     }
     useEffect(()=>{
       fetchBookById()
@@ -38,7 +47,7 @@ export default function BooksEdit() {
         <TextField label='Author' name='author' value ={pageData.author} onChange={onChangeText} placeholder='Please enter author here'/>
         <TextField label='imgUrl' name='imgUrl' value ={pageData.imgUrl} onChange={onChangeText} placeholder='Please enter imgUrl here'/>
         <TextField label='about' name='about' value ={pageData.about} onChange={onChangeText} placeholder='Please enter about here'/>
-        <PrimaryButton style={{width:"100px",height:"50px",marginTop:50}} text='Create Book'
+        <PrimaryButton style={{width:"100px",height:"50px",marginTop:50}} text='Save Changes'
           onClick={
             ()=>editBook()
           }
