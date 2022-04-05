@@ -14,7 +14,8 @@ export default function ToolBar() {
                 navigate("/book/create")
             }
         }]}
-        />
+        style={{paddingTop:50}}/>
+        <hr style={{border:"1pc solid #eee",margin:0}}/>
     </div>
   )
 }

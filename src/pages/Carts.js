@@ -1,6 +1,7 @@
 import { DetailsList,Stack,PrimaryButton,SelectionMode } from '@fluentui/react';
 import axios from 'axios'
 import React,{useState,useEffect} from 'react'
+import ToolBar from '../component/ToolBar';
 const columnProps={
   tokens:{childrenGap:20},
   styles:{root:{width:100}},
@@ -85,6 +86,7 @@ export default function Carts() {
   },[])
   return (
 <div>
+  
   <div className='content'>
     <div className='content-header'>{carts.length>0? "Carts" : "Cart is Empty"}</div>
     {carts.length > 0 &&<DetailsList items={carts} columns={columns} selectionMode = {SelectionMode.none}/>}
