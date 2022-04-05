@@ -1,0 +1,24 @@
+a.header-text{
+    color:white;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+a.header-button{
+    float: right;
+    color: white;
+    font-size: large;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-decoration: none;
+}
+.header-button:hover{
+    background-color:#3e9de6;
+}
+.header-text:hover{
+    background-color: #3e9de6;
+}
